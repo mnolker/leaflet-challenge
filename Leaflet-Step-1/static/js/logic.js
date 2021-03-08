@@ -20,7 +20,7 @@ function getColor(d) {
     return d > 90 ? '#f03b20' :
             d > 70  ? '#fd8d3c' :
             d > 50  ? '#feb24c' :
-            d > 30  ? '#ffffb2' :
+            d > 30  ? '#e6e600' :
             d > 10   ? '#ccff33' :
                         '#78c679';
 }
@@ -55,21 +55,20 @@ function createMap(earthquakeLocation) {
         layers: [lightmap, earthquakeLocation]
     });
 
-    var legend = L.control({position: 'bottomleft'});
+    var legend = L.control({position: 'bottomright'});
 
         legend.onAdd = function (myMap) {
     
         var div = L.DomUtil.create('div', 'info legend'),
         depth = ["-10 to 10", "10-10", "30-50", "50-70", "70-90", "90+"]
-        color = ['#78c679','#ccff33','#ffffb2','#feb24c','#fd8d3c','#f03b20'];
+        color = ['#78c679','#ccff33','#e6e600','#feb24c','#fd8d3c','#f03b20'];
     
-        title= ['<strong>Marker Color Codes</strong>'],
         labels = [];
         for ( var i=0; i < depth.length; i++) {
             labels.push( 
                 '<i class="square" style="background:' + color[i] + '"></i>'+ depth[i] + '')
         }
-        div.innerHTML = labels.join('<br>');
+        div.innerHTML = '<h3>Earthquake Depth</h3>' + labels.join('<br>');
             return div;
             };  
         
